@@ -30,8 +30,10 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Guess the flag")
-                    .font(.largeTitle.bold())
-                    .foregroundStyle(.white)
+                    .modifier(Title())
+                    .colorInvert()
+//                    .font(.largeTitle.bold())
+//                    .foregroundStyle(.white)
                 
                 VStack(spacing: 15) {
                     VStack {
@@ -61,8 +63,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Score: ???")
-                    .foregroundStyle(.white)
-                    .font(.largeTitle.bold())
+                    .modifier(Title())
                 
                 Spacer()
                 
@@ -100,6 +101,18 @@ extension ContentView {
                 .shadow(radius: 5)
         }
     }
+    
+    struct Title: ViewModifier {
+            func body(content: Content) -> some View {
+                content
+                    .font(.largeTitle)
+                    .foregroundStyle(.blue)
+                    .padding()
+                    .clipShape(.rect(cornerRadius: 10))
+                    .bold()
+            }
+        }
+
 }
 
 #Preview {
